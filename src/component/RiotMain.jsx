@@ -42,6 +42,7 @@ const RiotMain = () => {
   return (
     <div className="th__wrap">
       <div className="container">
+        {/* 초기 데이터 호출 및 resize scroll 등 store 기본 데이터 적용 단계 */}
         <Outlet context={location} />
       </div>
     </div>

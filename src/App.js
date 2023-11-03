@@ -1,4 +1,4 @@
-import RiotMain from 'component/pages/RiotMain';
+import RiotMain from 'component/RiotMain';
 import './App.css';
 import { GlobalStyles } from 'component/common/styled/GlobalStyles';
 

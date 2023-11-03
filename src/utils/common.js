@@ -19,7 +19,6 @@ export const ranDom = (_max, name) => { // 랜덤 값 (최대 값, 이름지정_
   return newId;
 }
 
-
 export const regExpChk = (val) => {
   //eslint-disable-next-line
   const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; // 띄어쓰기 허용 /[ \
