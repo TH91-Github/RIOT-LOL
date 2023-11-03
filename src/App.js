@@ -1,6 +1,6 @@
 import RiotMain from 'component/pages/RiotMain';
 import './App.css';
-import { GlobalStyles } from "assets/styles/GlobalStyles";
+import { GlobalStyles } from 'component/common/styled/GlobalStyles';
 
 function App() {
   return (
