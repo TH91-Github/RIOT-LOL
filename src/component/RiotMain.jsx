@@ -20,7 +20,6 @@ const RiotMain = () => {
     loadData();
   }, [loadData]);
 
-
   // Resize
   const handleReSize = useCallback(()=> {
     let moState = isMobile();

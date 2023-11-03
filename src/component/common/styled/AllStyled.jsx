@@ -1,18 +1,18 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
-// css - 유지
-const flexOption = css`
-  display:flex;
-  flex-wrap:wrap;
-  flex-direction: ${props => props.$direction || 'row'};
-  justify-content : ${props => props.$justifyConent || 'flex-start'}; 
-  ${props => `
-    ${props.$gap && `gap : ${props.$gap}px`};
-    ${props.$size && `
-      &>li {width: calc((100% - ${(props.$gap * (props.$size-1))}px) / ${props.$size});}
-    `};
-  `}
-`;
+// // css - 유지
+// const flexOption = css`
+//   display:flex;
+//   flex-wrap:wrap;
+//   flex-direction: ${props => props.$direction || 'row'};
+//   justify-content : ${props => props.$justifyConent || 'flex-start'}; 
+//   ${props => `
+//     ${props.$gap && `gap : ${props.$gap}px`};
+//     ${props.$size && `
+//       &>li {width: calc((100% - ${(props.$gap * (props.$size-1))}px) / ${props.$size});}
+//     `};
+//   `}
+// `;
 
 export const Blind = styled.span`
   position: absolute;
