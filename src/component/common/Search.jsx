@@ -31,7 +31,6 @@ function Search({placeholder, btnText, propsEvent}){
   }
   return (
     <SearchWrap className={'search ' + (isFocus?'focusOn':'')}>
-      {isFocus}
       <SearchInputBox>
         <SearchInput 
           id="search-input"
@@ -50,7 +49,7 @@ function Search({placeholder, btnText, propsEvent}){
         onBlur={focusOut}
         onClick={buttonClick}
         onKeyUp={keyUp}>
-        <SearChIcon className={isFocus && 'focusOn' }>
+        <SearChIcon className={val.length && 'on' }>
           <SvgSearch $bgcolor="transparent" $lineColor={isFocus ? colors.green38a899 : colors.baseBlack}/>
         </SearChIcon>
         <SC.Blind>{btnText !== undefined ? btnText : "검색"}</SC.Blind>
@@ -60,7 +59,6 @@ function Search({placeholder, btnText, propsEvent}){
 }
 export default Search;
 
-const test = false;
 const SearchWrap = styled.div`
   display:flex;
   justify-content:space-between;
@@ -70,7 +68,7 @@ const SearchWrap = styled.div`
   padding:0 25px;
   border-radius:25px;
   border:1px solid ${colors.baseWhite};
-  box-shadow: 0 2px 2px rgba(0,0,0,.3);
+  box-shadow: 1px 2px 2px rgba(0,0,0,.3);
   transition:${transitions.base};
   &.focusOn {
     border-color:${colors.green38a899};
@@ -82,13 +80,23 @@ const SearchWrap = styled.div`
       }
     }
     .search-btn {
-      .border:1px solid ${colors.green38a899};
+      &>span {
+        transform: scale(1);
+      }
     }
   }
   &:hover {
     border-color:${colors.yellowf1cb45};
-    svg path {
-      stroke:${colors.yellowf1cb45};
+    .search-btn {
+      &>span {
+        transform: scale(1);
+        &::before,&::after {
+          border-color:${colors.yellowf1cb45};
+        }
+        svg path {
+          stroke:${colors.yellowf1cb45};
+        }
+      }
     }
   }
 `;
@@ -119,24 +127,16 @@ const SearchBtn = styled(SC.Button)`
   padding-left:5px;
   outline:0;
   transition:${transitions.base};
-  &:focus {
-    &>span {
-      animation: focusOn 10s ease infinite;
-    }
-    @keyframes  {
-      0%{background-position:97% 0%}
-      50%{background-position:4% 100%}
-      100%{background-position:97% 0%}
-    }
-  }
 `;
 const SearChIcon = styled.span`
   display:inline-block;
+  position:relative;
   width:30px;
   height:30px;
   transition:${transitions.base};
-
+  transform: scale(0);
   &::before, &::after {
+    display:none;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -145,31 +145,30 @@ const SearChIcon = styled.span`
     content: '';
     z-index: -1;
     margin: -5%;
-    border:3px solid rgba(105, 202, 98, 0.5);
-    animation: clipMe 8s linear infinite;
+    border:1px solid ${colors.green38a899};
+    animation: clipMe 4s linear infinite;
   }
   &::before {
-    animation-delay: -4s;
+    animation-delay: -2s;
   }
   @keyframes clipMe {
     0%, 100% {
-      clip: rect(0px, 30px, 2px, 0px);
+      clip: rect(0px, 33px, 1px, 0px);
     }
     25% {
-      clip: rect(0px, 2px, 30px, 0px);
+      clip: rect(0px, 1px, 33px, 0px);
     }
     50% {
-      clip: rect(28px, 30px, 28px, 0px);
+      clip: rect(32px, 33px, 33px, 0px);
     }
     75% {
-      clip: rect(0px, 30px, 30px, 28px);
+      clip: rect(0px, 33px, 33px, 31px);
     }
   }
-
-
-
-  transform: scale(0);
-  &.focusOn {
-    transform: scale(1);
+  &.on {
+    &::before, &::after{
+      display:block;
+    }
   }
+  
 `;
