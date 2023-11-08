@@ -50,7 +50,7 @@ function Search({placeholder, btnText, propsEvent}){
         onClick={buttonClick}
         onKeyUp={keyUp}>
         <SearChIcon className={val.length && 'on' }>
-          <SvgSearch $bgcolor="transparent" $lineColor={isFocus ? colors.green38a899 : colors.baseBlack}/>
+          <SvgSearch $bgcolor="transparent" $lineColor={isFocus ? colors.green : colors.baseBlack}/>
         </SearChIcon>
         <SC.Blind>{btnText !== undefined ? btnText : "검색"}</SC.Blind>
       </SearchBtn>
@@ -71,7 +71,7 @@ const SearchWrap = styled.div`
   box-shadow: 1px 2px 2px rgba(0,0,0,.3);
   transition:${transitions.base};
   &.focusOn {
-    border-color:${colors.green38a899};
+    border-color:${colors.green};
     .search-input {
       padding-top:0;
       font-size:${fonts.size}px;
@@ -86,15 +86,15 @@ const SearchWrap = styled.div`
     }
   }
   &:hover {
-    border-color:${colors.yellowf1cb45};
+    border-color:${colors.yellow};
     .search-btn {
       &>span {
         transform: scale(1);
         &::before,&::after {
-          border-color:${colors.yellowf1cb45};
+          border-color:${colors.yellow};
         }
         svg path {
-          stroke:${colors.yellowf1cb45};
+          stroke:${colors.yellow};
         }
       }
     }
@@ -145,7 +145,7 @@ const SearChIcon = styled.span`
     content: '';
     z-index: -1;
     margin: -5%;
-    border:1px solid ${colors.green38a899};
+    border:1px solid ${colors.green};
     animation: clipMe 4s linear infinite;
   }
   &::before {

@@ -34,10 +34,10 @@ export const colors = {
   balck222: "#222222",
   whitef8f9fc: "#f8f9fc",
   // point
-  green38a899:"#38a899",
-  yellowf1cb45:"#f1cb45",
-  blue327eea:"#327eea",
-  redee8392c:"#e8392c",
+  green:"#38a899",
+  yellow:"#f1cb45",
+  blue:"#327eea",
+  red:"#e8392c",
   // bg Color 
   bgGreen113536: "#113536",
   // Text Color
