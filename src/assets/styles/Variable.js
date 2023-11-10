@@ -6,9 +6,7 @@ export const fonts = {
   size12: 12,
   weight: 550,
   bold: 600,
-  font: "NanumGothic",
-  fontB: "NanumGothicBold",
-  fontL: "NanumGothicLight",
+  font: "SUIT', sans-serif",
 }
 
 export const breakpoints = {
@@ -38,6 +36,7 @@ export const colors = {
   yellow:"#f1cb45",
   blue:"#327eea",
   red:"#e8392c",
+  pink:"ff109f",
   // bg Color 
   bgGreen113536: "#113536",
   // Text Color

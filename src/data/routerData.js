@@ -1,8 +1,8 @@
-import UserSearch from "component/pages/UserSearch";
+import MainSearch from "component/pages/MainSearch";
 
 export const routerData = [
   { // Main 쳇 페이지
     index: true,
-    element: <UserSearch />,
+    element: <MainSearch />,
   },
 ]

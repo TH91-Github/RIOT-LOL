@@ -1,8 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
-
+/*** font ***/
+// 참고 url : https://sunn.us/suit/
 export const GlobalStyles = createGlobalStyle`
   body {
     font-size: 16px;
+    font-family:'SUIT', sans-serif;
   }
   img {
     vertical-align: top;
