@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import * as SC from "component/common/styled/AllStyled";
+import * as SC from "assets/styles/AllStyled";
 import styled from 'styled-components';
 import { colors, fonts, transitions } from 'assets/styles/Variable';
 import { SvgSearch } from 'assets/styles/SvgPath';
+import { regExpChk } from 'utils/common';
 
-function Search({placeholder, btnText, propsEvent}){
+function Search({placeholder, btnText, propsEvent, mouseAction}){
   const [isFocus, setIsFocus] = useState(false);
   const [val, SetVal] = useState('');
-
   const focusIn = (e) => {
-    setIsFocus(true)
+    setIsFocus(true);
   }
   const focusOut = (e) => {
     if(val.length>0){
@@ -20,7 +20,8 @@ function Search({placeholder, btnText, propsEvent}){
     }
   }
   const inputChange = (e) => {
-    SetVal(e.target.value)
+    const filterTxt = regExpChk(e.target.value);
+    SetVal(filterTxt)
   }
   const buttonClick = () => {
     propsEvent && propsEvent(val)
@@ -29,8 +30,17 @@ function Search({placeholder, btnText, propsEvent}){
   const keyUp = (e) => {
     e.key === 'Enter' && buttonClick();
   }
+  const onMouse = () => {
+    mouseAction(true);
+  }
+  const offMouse = () => {
+    mouseAction(false);
+  }
   return (
-    <SearchWrap className={'search ' + (isFocus?'focusOn':'')}>
+    <SearchWrap 
+      onMouseEnter={onMouse}
+      onMouseLeave={offMouse}
+      className={'search ' + (isFocus?'focusOn':'')}>
       <SearchInputBox>
         <SearchInput 
           id="search-input"
@@ -69,6 +79,7 @@ const SearchWrap = styled.div`
   border-radius:25px;
   border:1px solid ${colors.baseWhite};
   box-shadow: 1px 2px 2px rgba(0,0,0,.3);
+  background:#fff;
   transition:${transitions.base};
   &.focusOn {
     border-color:${colors.green};
