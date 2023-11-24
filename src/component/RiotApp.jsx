@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet, useLocation } from "react-router-dom";
 import { sSetDataAll, sSetMobileChk } from "store/store";
 // import { loadAxios } from "utils/fetchAxios";
 import { isMobile } from "utils/common.js"
 const RiotMain = () => {
-  // const [baseData, setBaseData] = useState('');
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -30,14 +29,10 @@ const RiotMain = () => {
   useEffect(() => {
     handleReSize();
     window.addEventListener("resize", handleReSize);
-    // window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("resize", handleReSize);
-      // window.removeEventListener("scroll", handleScroll);
     };
   }, [handleReSize]);
-
-  // if(!baseData) return;
 
   return (
     <div className="th__wrap">

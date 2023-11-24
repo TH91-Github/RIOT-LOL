@@ -9,5 +9,6 @@ export const loadAxios = async (SERVER_URL) => {
     }
   }catch(error){
     console.log(error);
+    return error;
   }
 }

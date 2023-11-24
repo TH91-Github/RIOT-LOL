@@ -1,34 +1,23 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import * as SC from "assets/styles/AllStyled";
 import styled from 'styled-components';
 import { colors, fonts, transitions } from 'assets/styles/Variable';
 import { SvgSearch } from 'assets/styles/SvgPath';
-import { regExpChk } from 'utils/common';
 
 function Search({placeholder, btnText, propsEvent, mouseAction}){
   const [isFocus, setIsFocus] = useState(false);
+  const inputFocus = useRef();
   const [val, SetVal] = useState('');
+
   const focusIn = (e) => {
     setIsFocus(true);
   }
   const focusOut = (e) => {
-    if(val.length>0){
-      console.log("있네")
-    }else{
-      console.log("없네")
-      setIsFocus(false);
-    }
+    !val.length>0 && setIsFocus(false)
   }
   const inputChange = (e) => {
-    const filterTxt = regExpChk(e.target.value);
-    SetVal(filterTxt)
-  }
-  const buttonClick = () => {
-    propsEvent && propsEvent(val)
-    SetVal(''); // 초기화
-  }
-  const keyUp = (e) => {
-    e.key === 'Enter' && buttonClick();
+    const nameVal = e.target.value;
+    SetVal(nameVal);
   }
   const onMouse = () => {
     mouseAction(true);
@@ -36,35 +25,57 @@ function Search({placeholder, btnText, propsEvent, mouseAction}){
   const offMouse = () => {
     mouseAction(false);
   }
+  // User Name 1차 필터링 - 앞 뒤 공백 제거, 이름이 두 글자일 경우 사이에 공백 추가
+  const userNameChk = () => { 
+    let useName = val.trim();
+    if(useName.length === 2) {
+      useName = useName.charAt(0) +' '+useName.charAt(1);
+    }
+    return useName
+  }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const filterName = userNameChk();
+    filterName === '' 
+    ? inputFocus.current.focus()
+    :
+      propsEvent && propsEvent(filterName)
+      SetVal('') // 초기화
+  }
   return (
-    <SearchWrap 
-      onMouseEnter={onMouse}
-      onMouseLeave={offMouse}
-      className={'search ' + (isFocus?'focusOn':'')}>
-      <SearchInputBox>
-        <SearchInput 
-          id="search-input"
-          className="search-input"
-          placeholder={placeholder !== undefined ? placeholder : "입력해주세요"} 
-          value={val} 
-          onFocus={(e) => focusIn(e)}
-          onBlur={(e)=> focusOut(e)}
-          onChange={(e)=>inputChange(e)} 
-          onKeyUp={keyUp} />
-          <SearchLabel htmlFor="search-input">Search</SearchLabel>
-      </SearchInputBox>
-      <SearchBtn 
-        className="search-btn"
-        onFocus={focusIn}
-        onBlur={focusOut}
-        onClick={buttonClick}
-        onKeyUp={keyUp}>
-        <SearChIcon className={val.length && 'on' }>
-          <SvgSearch $bgcolor="transparent" $lineColor={isFocus ? colors.green : colors.baseBlack}/>
-        </SearChIcon>
-        <SC.Blind>{btnText !== undefined ? btnText : "검색"}</SC.Blind>
-      </SearchBtn>
-    </SearchWrap>
+    <div>
+      <form onSubmit={onSubmit}>
+        <SearchWrap 
+          onMouseEnter={onMouse}
+          onMouseLeave={offMouse}
+          className={'search ' + (isFocus?'focusOn':'')}>
+            <SearchInputBox>
+              <SearchInput 
+                id="search-input"
+                className="search-input"
+                ref={inputFocus}
+                placeholder={placeholder !== undefined ? placeholder : "입력해주세요"} 
+                value={val} 
+                onFocus={(e) => focusIn(e)}
+                onBlur={(e)=> focusOut(e)}
+                onChange={(e)=>inputChange(e)}/>
+                <SearchLabel htmlFor="search-input">Search</SearchLabel>
+            </SearchInputBox>
+            <SearchBtn 
+              className="search-btn"
+              onFocus={focusIn}
+              onBlur={focusOut}
+              onClick={onSubmit}>
+              <SearChIcon className={val.length && 'on' }>
+                <SvgSearch $bgcolor="transparent" $lineColor={isFocus ? colors.green : colors.baseBlack}/>
+              </SearChIcon>
+              <SC.Blind>{btnText !== undefined ? btnText : "검색"}</SC.Blind>
+            </SearchBtn>
+        </SearchWrap>
+      </form>
+    </div>
+
+    
   )
 }
 export default Search;

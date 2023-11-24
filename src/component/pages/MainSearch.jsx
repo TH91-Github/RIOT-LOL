@@ -1,33 +1,27 @@
 import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
 import Search from "component/common/Search";
 import styled from "styled-components";
 import { colors, transitions } from "assets/styles/Variable";
-import { API_KEY } from "constants/ApiConfig";
+import { LOL_API_SUMMONER } from "constants/ApiConfig";
+import { loadAxios } from "utils/api";
 
-  console.log(process.env.REACT_APP_API_KEY)
-  
+  const TESTNAME ="게보린";
+
   const MainSearch = () => {
   const [mouseOn, setMouseOn] = useState(false);
-   // TEST
-  const loadAxios = useCallback(async () => {
-    try {
-      const res = await axios.get(``);
-      console.log(res)
-      if(res.status === 200){
-        console.log(res)
-      }
-    }catch(error){
-      console.log(error);
-    }
-  },[])
+
+  const loadData = useCallback(async () => {
+    const res = await loadAxios(LOL_API_SUMMONER(TESTNAME));
+    console.log(res.data)
+  }, []);
 
   useEffect(() => {
-    loadAxios();
-  }, [loadAxios]);
+    loadData();
+  }, [loadData]);
 
-
-
+  const searchResult = (e) => {
+    console.log(e)
+  }
 
   return (
     <MainSearchWrap>
@@ -43,8 +37,9 @@ import { API_KEY } from "constants/ApiConfig";
             <EyeR />
           </EyeBox>
         </EyeWrap>
+        {/* 유저 검색 */}
         <UserSerach>
-          <Search placeholder="소환사명" mouseAction={setMouseOn}/>
+          <Search placeholder="소환사명" mouseAction={setMouseOn} propsEvent={searchResult}/>
         </UserSerach>
       </MainSearchInner>
     </MainSearchWrap>

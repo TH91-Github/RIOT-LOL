@@ -1,10 +1,10 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
-const allData = createSlice({
+const userData = createSlice({
   name: "Data Load",
   initialState: [],
   reducers: {
-    sSetDataAll(state, propsName){
+    sSetUserData(state, propsName){
       return state = propsName.payload;
     }
   }
@@ -22,10 +22,10 @@ const mobileChk = createSlice({ // mobile 체크
 
 export default configureStore({
   reducer: { 
-    allData: allData.reducer,
+    userData: userData.reducer,
     mobileChk: mobileChk.reducer,
   }
 }) 
 
-export const { sSetDataAll } = allData.actions;
+export const { sSetDataAll } = userData.actions;
 export const { sSetMobileChk } = mobileChk.actions;
