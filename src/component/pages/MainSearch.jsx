@@ -1,28 +1,34 @@
-import { colors, transitions } from "assets/styles/Variable";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import Search from "component/common/Search";
-import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
+import { colors, transitions } from "assets/styles/Variable";
+import { API_KEY } from "constants/ApiConfig";
 
-
-const MainSearch = () => {
+  console.log(process.env.REACT_APP_API_KEY)
+  
+  const MainSearch = () => {
   const [mouseOn, setMouseOn] = useState(false);
-   // // TEST
-  // const loadAxios = useCallback(async () => {
-  //   try {
-  //     const res = await axios.get(``,);
-  //     console.log(res)
-  //     if(res.status === 200){
-  //       console.log(res)
-  //     }
-  //   }catch(error){
-  //     console.log(error);
-  //   }
-  // },[])
+   // TEST
+  const loadAxios = useCallback(async () => {
+    try {
+      const res = await axios.get(``);
+      console.log(res)
+      if(res.status === 200){
+        console.log(res)
+      }
+    }catch(error){
+      console.log(error);
+    }
+  },[])
 
-  // useEffect(() => {
-  //   loadAxios();
-  // }, [loadAxios]);
+  useEffect(() => {
+    loadAxios();
+  }, [loadAxios]);
+
+
+
+
   return (
     <MainSearchWrap>
       <MainSearchInner>

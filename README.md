@@ -1,16 +1,18 @@
+
+###  🔗 🚧 작업중...<br>
+
 # React LOL OP.GG 제작📚
 
 ## 🖥️ https://github.com/TH91-Github/RIOT-LOL
 
+확인 url 
+https://riot-lol.vercel.app/
+
 ## 소개
-<p>
-- op.gg와 같이 만들어 보자.
-- 나만의 LOL 검색 사이트 
-</p>
+<p>- lol 유저 정보 검색 사이트</p>
+<p>- 배포: https://vercel.com/</p>
 <br>
 
-###  🔗
-🚧 준비중...<br>
 
 ```shell
 git clone https://github.com/TH91-Github/RIOT-LOL
