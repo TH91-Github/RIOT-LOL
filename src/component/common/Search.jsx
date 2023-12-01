@@ -5,10 +5,10 @@ import { colors, fonts, transitions } from 'assets/styles/Variable';
 import { SvgSearch } from 'assets/styles/SvgPath';
 
 function Search({placeholder, btnText, propsEvent, mouseAction}){
+  // console.log("Search Component!")
   const [isFocus, setIsFocus] = useState(false);
   const inputFocus = useRef();
   const [val, SetVal] = useState('');
-
   const focusIn = (e) => {
     setIsFocus(true);
   }
@@ -138,7 +138,7 @@ const SearchInput = styled.input`
   height:100%;
   padding:25px 0 0 10px;
   font-size:${fonts.size12}px;
-  color:${colors.subTextColor};
+  color:${colors.textColor};
   transition:${transitions.base};
   border:none;
   outline:0;

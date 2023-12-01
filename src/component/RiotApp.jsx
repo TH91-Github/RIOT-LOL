@@ -1,24 +1,12 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet, useLocation } from "react-router-dom";
-import { sSetDataAll, sSetMobileChk } from "store/store";
+import { sSetMobileChk } from "store/store";
 // import { loadAxios } from "utils/fetchAxios";
 import { isMobile } from "utils/common.js"
 const RiotMain = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-
-  // // 초기 데이터 변수 저장 및 store 저장
-  // const loadData = useCallback(async () => {
-  //   const res = await loadAxios("https://raw.githubusercontent.com/TH91-Github/Data_Storage/main/th-blog/data/data.json");
-  //   setBaseData(res.data);
-  //   console.log(res.data)
-  //   dispatch(sSetDataAll(res.data));
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   loadData();
-  // }, [loadData]);
 
   // Resize
   const handleReSize = useCallback(()=> {
