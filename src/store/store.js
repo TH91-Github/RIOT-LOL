@@ -3,7 +3,7 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
 const userData = createSlice({
   name: "Data Load",
   initialState: {
-    test : null
+    info : null
   },
   reducers: {
     sSetUserData(state, propsName){

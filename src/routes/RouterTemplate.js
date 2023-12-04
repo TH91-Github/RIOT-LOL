@@ -16,7 +16,7 @@ function RouterTemplate(){
           element: <MainSearch />,
         },
         {
-          path:"summoners",
+          path:"summoners/kr/:id",
           element: <Summoners />
         }
       ]

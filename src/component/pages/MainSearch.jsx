@@ -35,10 +35,11 @@ function MainSearch () {
       const userMatchId = await loadAxios(LOL_API_MATYCH_ID(userInfo.data.puuid))
       upLoadData.match = userMatchId.data;
       dispatch(sSetUserData(upLoadData))
+    
       setLoading(false);
       setError(false);
-      console.log("소환사 검색 성공")
-      navigate("/summoners"); // 페이지 이동
+      console.log("소환사 검색 성공");
+      navigate(`/summoners/kr/${upLoadData.info.name}-KR1`); // 페이지 이동
     }catch(error){
       console.log(error);
       setError(true);
@@ -48,9 +49,7 @@ function MainSearch () {
   const searchResult = (e) => { // 검색을 받아온다 -> 유저 정보
     console.log(e);
     loadData(e);
-
   }
-  console.log(loading)
   return (
     <MainSearchWrap>
       <MainSearchInner>

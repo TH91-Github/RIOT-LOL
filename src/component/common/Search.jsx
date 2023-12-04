@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { colors, fonts, transitions } from 'assets/styles/Variable';
 import { SvgSearch } from 'assets/styles/SvgPath';
 
-function Search({placeholder, btnText, propsEvent, mouseAction}){
+function Search({placeholder, btnText, propsEvent, mouseAction, ...props}){
   // console.log("Search Component!")
   const [isFocus, setIsFocus] = useState(false);
   const inputFocus = useRef();
@@ -20,10 +20,10 @@ function Search({placeholder, btnText, propsEvent, mouseAction}){
     SetVal(nameVal);
   }
   const onMouse = () => {
-    mouseAction(true);
+    mouseAction && mouseAction(true);
   }
   const offMouse = () => {
-    mouseAction(false);
+    mouseAction && mouseAction(false);
   }
   // User Name 1차 필터링 - 앞 뒤 공백 제거, 이름이 두 글자일 경우 사이에 공백 추가
   const userNameChk = () => { 
@@ -43,12 +43,13 @@ function Search({placeholder, btnText, propsEvent, mouseAction}){
       SetVal('') // 초기화
   }
   return (
-    <div>
+    <>
       <form onSubmit={onSubmit}>
         <SearchWrap 
           onMouseEnter={onMouse}
           onMouseLeave={offMouse}
-          className={'search ' + (isFocus?'focusOn':'')}>
+          className={`search ${props.className ? props.className:''} ${isFocus?'focusOn':''}`}
+          >
             <SearchInputBox>
               <SearchInput 
                 id="search-input"
@@ -59,7 +60,7 @@ function Search({placeholder, btnText, propsEvent, mouseAction}){
                 onFocus={(e) => focusIn(e)}
                 onBlur={(e)=> focusOut(e)}
                 onChange={(e)=>inputChange(e)}/>
-                <SearchLabel htmlFor="search-input">Search</SearchLabel>
+                <SearchLabel className="search-label" htmlFor="search-input">Search</SearchLabel>
             </SearchInputBox>
             <SearchBtn 
               className="search-btn"
@@ -73,9 +74,7 @@ function Search({placeholder, btnText, propsEvent, mouseAction}){
             </SearchBtn>
         </SearchWrap>
       </form>
-    </div>
-
-    
+    </>
   )
 }
 export default Search;
@@ -119,6 +118,18 @@ const SearchWrap = styled.div`
           stroke:${colors.yellow};
         }
       }
+    }
+  }
+  &.inner {
+    height: 40px;
+    padding:0 15px;
+    border-radius:0;
+    .search-input{
+      padding: 0 0 0 10px;
+      font-size:14px;
+    }
+    .search-label{
+      display:none;
     }
   }
 `;

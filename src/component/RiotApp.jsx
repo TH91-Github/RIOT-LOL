@@ -23,7 +23,7 @@ const RiotMain = () => {
   }, [handleReSize]);
 
   return (
-    <div className="th__wrap">
+    <div className="wrap">
       <div className="container">
         <Outlet context={location} />
       </div>
