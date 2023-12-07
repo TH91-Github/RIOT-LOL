@@ -49,10 +49,12 @@ export default RiotMain;
 
 const TestBox = styled.div`
   overflow: auto;
-  width:500px;
+  width:100%;
+  max-width:300px;
   height:100px;
   margin:0 auto;
   border:1px solid red;
+  box-sizing:border-box;
   &::-webkit-scrollbar {
     width: 10px;
   }
