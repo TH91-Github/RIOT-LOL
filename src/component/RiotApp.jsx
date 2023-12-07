@@ -26,7 +26,7 @@ const RiotMain = () => {
   return (
     <div className="wrap">
       <div className="container">
-        TEST 중입니다.1
+        TEST 중입니다.12123123
         <p>estsetsetsetsetsetsetsetse</p>
         <p>estsetsetsetsetsetsetsetse</p>
         <p>estsetsetsetsetsetsetsetse</p>
@@ -74,7 +74,8 @@ height:100vh;
     margin:0 auto;
     border:1px solid green;
     box-sizing:border-box;
+    background:black;
   }
-  background:black;
+  
   color:#fff;
 `;
