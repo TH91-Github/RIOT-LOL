@@ -26,7 +26,7 @@ const RiotMain = () => {
   return (
     <div className="wrap">
       <div className="container">
-        TEST 중입니다.12123123
+        TEST 중입니다.555555
         <p>estsetsetsetsetsetsetsetse</p>
         <p>estsetsetsetsetsetsetsetse</p>
         <p>estsetsetsetsetsetsetsetse</p>
