@@ -55,13 +55,5 @@ const TestBox = styled.div`
   margin:0 auto;
   border:1px solid red;
   box-sizing:border-box;
-  &::-webkit-scrollbar {
-    -webkit-appearance:none;
-  }
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-  &::-webkit-scrollbar-thumb {
-      background: blue ;
-  }
+  
 `;
