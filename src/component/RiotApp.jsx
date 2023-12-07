@@ -27,6 +27,21 @@ const RiotMain = () => {
     <div className="wrap">
       <div className="container">
         TEST 중입니다.1
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p><p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
+        <p>estsetsetsetsetsetsetsetse</p>
         <TestBox>
           <div className="box">
             <p>estsetsetsetsetsetsetsetse</p>
@@ -50,6 +65,7 @@ export default RiotMain;
 
 
 const TestBox = styled.div`
+height:100vh;
   .box {
     overflow: auto;
     width:100%;
@@ -58,7 +74,7 @@ const TestBox = styled.div`
     margin:0 auto;
     border:1px solid green;
     box-sizing:border-box;
-
-    
   }
+  background:black;
+  color:#fff;
 `;
