@@ -26,18 +26,20 @@ const RiotMain = () => {
   return (
     <div className="wrap">
       <div className="container">
-        TEST 중입니다.5
+        TEST 중입니다.1
         <TestBox>
-          <p>tsetsetsetsetsetsetset</p>
-          <p>tsetsetsetsetsetsetset</p>
-          <p>tsetsetsetsetsetsetset</p>
-          <p>tsetsetsetsetsetsetset</p>
-          <p>tsetsetsetsetsetsetset</p>
-          <p>tsetsetsetsetsetsetset</p>
-          <p>tsetsetsetsetsetsetset</p>
-          <p>tsetsetsetsetsetsetset</p>
-          <p>tsetsetsetsetsetsetset</p>
-          <p>tsetsetsetsetsetsetset</p>
+          <div className="box">
+            <p>estsetsetsetsetsetsetsetse</p>
+            <p>estsetsetsetsetsetsetsetse</p>
+            <p>estsetsetsetsetsetsetsetse</p>
+            <p>estsetsetsetsetsetsetsetse</p>
+            <p>estsetsetsetsetsetsetsetse</p>
+            <p>estsetsetsetsetsetsetsetse</p>
+            <p>estsetsetsetsetsetsetsetse</p>
+            <p>estsetsetsetsetsetsetsetse</p>
+            <p>estsetsetsetsetsetsetsetse</p>
+
+          </div>
         </TestBox>  
         {/* <Outlet context={location} /> */}
       </div>
@@ -48,12 +50,15 @@ export default RiotMain;
 
 
 const TestBox = styled.div`
-  overflow: auto;
-  width:100%;
-  max-width:300px;
-  height:100px;
-  margin:0 auto;
-  border:1px solid red;
-  box-sizing:border-box;
-  
+  .box {
+    overflow: auto;
+    width:100%;
+    max-width:152px;
+    height:100px;
+    margin:0 auto;
+    border:1px solid green;
+    box-sizing:border-box;
+
+    
+  }
 `;
