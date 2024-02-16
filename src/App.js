@@ -98,6 +98,7 @@ const BoxHeight = styled.div`
   top:0;
   left:0;
   width:100%;
+  pointer-events : none;
   height:${props => `${props.$height}px` || `height:100svh`};
   .btn{
     position:absolute;
