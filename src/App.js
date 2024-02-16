@@ -22,15 +22,9 @@ function App() {
   const fullHeight = useRef(0);
   useEffect(() => {
     const handleVisualViewportResize = () => {
-      const currentVisualViewport = window.visualViewport.height
-      if (
-        prevVisualViewport - 30 > currentVisualViewport &&
-        prevVisualViewport - 100 < currentVisualViewport
-      ) {
-        const scrollHeight = window.document.scrollingElement.scrollHeight
-        const scrollTop = scrollHeight - window.visualViewport.height
-        window.scrollTo(0, scrollTop) // 입력창이 키보드에 가려지지 않도록 조절
-      }
+      const scrollHeight = window.document.scrollingElement.scrollHeight
+      const scrollTop = scrollHeight - window.visualViewport.height
+      window.scrollTo(0, scrollTop) // 입력창이 키보드에 가려지지 않도록 조절
       prevVisualViewport = window.visualViewport.height
       setHeightV(prevVisualViewport)
     }
