@@ -4,6 +4,10 @@ import { GlobalStyles } from './assets/styles/GlobalStyles';
 import styled from 'styled-components';
 import { useEffect, useRef, useState } from 'react';
 
+
+
+let prevVisualViewport = 0
+
 function App() {
   const [focusIn, setFocus] = useState(false);
   const [heightV, setHeightV] =useState(0);
@@ -18,11 +22,17 @@ function App() {
   const fullHeight = useRef(0);
   useEffect(() => {
     const handleVisualViewportResize = () => {
-      // aOS에서 키패드가 노출된 경우
-      if (window.innerHeight > window.visualViewport.height) {
-        console.log(window.innerHeight)
-        setHeightV(window.innerHeight);
+      const currentVisualViewport = window.visualViewport.height
+      if (
+        prevVisualViewport - 30 > currentVisualViewport &&
+        prevVisualViewport - 100 < currentVisualViewport
+      ) {
+        const scrollHeight = window.document.scrollingElement.scrollHeight
+        const scrollTop = scrollHeight - window.visualViewport.height
+        window.scrollTo(0, scrollTop) // 입력창이 키보드에 가려지지 않도록 조절
       }
+      prevVisualViewport = window.visualViewport.height
+      setHeightV(prevVisualViewport)
     }
       
       fullHeight.current = window.innerHeight;
