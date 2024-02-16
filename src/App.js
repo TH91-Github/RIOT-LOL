@@ -2,7 +2,7 @@ import RiotApp from 'component/RiotApp';
 import './App.css';
 import { GlobalStyles } from './assets/styles/GlobalStyles';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function App() {
   const [focusIn, setFocus] = useState(false);
@@ -14,6 +14,20 @@ function App() {
     setFocus(false);
   }
 
+  const fullHeight = useRef(0);
+  useEffect(() => {
+    const handleVisualViewportResize = () => {
+      // aOS에서 키패드가 노출된 경우
+        if (fullHeight.current > window.innerHeight) {
+          alert(window.innerHeight)
+        }
+      }
+      
+      fullHeight.current = window.innerHeight;
+      visualViewport.addEventListener('resize', handleVisualViewportResize);
+      
+      return () => visualViewport.removeEventListener('resize', handleVisualViewportResize);
+  }, [])
 
   return (
     <div className="App">
@@ -34,9 +48,9 @@ function App() {
         <BoxWrap1 $borderColor="pink">
           3번 박스
         </BoxWrap1>
-        <div className="btn-box">
+        <BoxHeight className="btn-box" $height={fullHeight.current}>
           <button className="btn"> 충전이 곧 완료됩니다.</button>
-        </div>
+        </BoxHeight>
       </Wrap>
     </div>
   );
@@ -67,7 +81,6 @@ const Wrap = styled.div`
     .btn-box {
       position:fixed;
       width:100%;
-      height:100svh;
       background:gray;
       top:0;
       left:0;
@@ -83,4 +96,8 @@ const Wrap = styled.div`
 const BoxWrap1 = styled.div`
   height:200px;
   border:1px solid ${props => props.$borderColor || 'green'};
+`;
+
+const BoxHeight = styled.div`
+  height:${props => `${props.$height}px` || `height:100svh`};
 `;
