@@ -6,21 +6,22 @@ import { useEffect, useRef, useState } from 'react';
 
 function App() {
   const [focusIn, setFocus] = useState(false);
+  const [heightV, setHeightV] =useState(0);
 
   const isFocus = () => {
-    setFocus(true);
+    // setFocus(true);
   }
   const outFocus = () => {
-    setFocus(false);
+    // setFocus(false);
   }
 
   const fullHeight = useRef(0);
   useEffect(() => {
     const handleVisualViewportResize = () => {
       // aOS에서 키패드가 노출된 경우
-        if (fullHeight.current > window.innerHeight) {
-          alert(window.innerHeight)
-        }
+      
+          console.log(window.innerHeight)
+          setHeightV(window.innerHeight);
       }
       
       fullHeight.current = window.innerHeight;
@@ -41,6 +42,7 @@ function App() {
             onFocus={()=>isFocus()}
             onBlur={()=>outFocus()}
             className="input" />
+            {heightV}
         </BoxWrap1>
         <BoxWrap1 $borderColor="yellow">
           2번 박스
@@ -48,7 +50,7 @@ function App() {
         <BoxWrap1 $borderColor="pink">
           3번 박스
         </BoxWrap1>
-        <BoxHeight className="btn-box" $height={fullHeight.current}>
+        <BoxHeight className="btn-box" $height={heightV}>
           <button className="btn"> 충전이 곧 완료됩니다.</button>
         </BoxHeight>
       </Wrap>
@@ -79,15 +81,8 @@ const Wrap = styled.div`
   }
   &.focus {
     .btn-box {
-      position:fixed;
-      width:100%;
-      background:gray;
-      top:0;
-      left:0;
       .btn{
-        position:absolute;
-        left:0;
-        bottom:0;
+       
       }
     }
   }
@@ -99,5 +94,14 @@ const BoxWrap1 = styled.div`
 `;
 
 const BoxHeight = styled.div`
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
   height:${props => `${props.$height}px` || `height:100svh`};
+  .btn{
+    position:absolute;
+    left:0;
+    bottom:0;
+  }
 `;
