@@ -19,10 +19,11 @@ function App() {
   useEffect(() => {
     const handleVisualViewportResize = () => {
       // aOS에서 키패드가 노출된 경우
-      
-          console.log(window.innerHeight)
-          setHeightV(window.innerHeight);
+      if (window.innerHeight > window.visualViewport.height) {
+        console.log(window.innerHeight)
+        setHeightV(window.innerHeight);
       }
+    }
       
       fullHeight.current = window.innerHeight;
       visualViewport.addEventListener('resize', handleVisualViewportResize);
