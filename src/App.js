@@ -14,6 +14,7 @@ function App() {
     setFocus(false);
   }
 
+
   return (
     <div className="App">
       <GlobalStyles />

@@ -3,6 +3,16 @@ import reset from 'styled-reset'
 
 export const GlobalStyles = createGlobalStyle`
 ${reset}
+
+  body {
+    display: grid;
+    height: 100vh;
+    grid-template:
+      "messages"  1fr
+      "input"     auto
+      "keyboard"  env(keyboard-inset-height, 0px);
+  }
+
   body {
     font-size: 16px;
     font-family:'SUIT', sans-serif;
