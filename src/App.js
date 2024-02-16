@@ -19,20 +19,33 @@ function App() {
     // setFocus(false);
   }
 
-  const fullHeight = useRef(0);
-  useEffect(() => {
+  let fullHeight = useRef(0); // var fullHeight = 0; 
+  useEffect(() => { // 신경 x 로드 시 실행인 문법
+   
     const handleVisualViewportResize = () => {
       const scrollHeight = window.document.scrollingElement.scrollHeight
+
       const scrollTop = scrollHeight - window.visualViewport.height
-      window.scrollTo(0, scrollTop) // 입력창이 키보드에 가려지지 않도록 조절
-      prevVisualViewport = window.visualViewport.height
+
+      // window.scrollTo(0, scrollTop) // 입력창이 키보드에 가려지지 않도록 조절
+
+      prevVisualViewport = window.visualViewport.height  // 👈 이 부분이 키패드 나왔을때 높이
+      // 키패드 나왔을때 
+      // 1: btn wrap-> height: calc(prevVisualViewport - 버튼 높이)px; 
+      // 2: btn에 직접 position:fixed; top:calc(prevVisualViewport - 버튼 높이)px; 하면되지 않을까 생각중.
+
       setHeightV(prevVisualViewport)
     }
+    fullHeight.current = window.innerHeight;
+    visualViewport.addEventListener('resize', handleVisualViewportResize);
       
-      fullHeight.current = window.innerHeight;
-      visualViewport.addEventListener('resize', handleVisualViewportResize);
-      
+
+
+
       return () => visualViewport.removeEventListener('resize', handleVisualViewportResize);
+
+
+
   }, [])
 
   return (
