@@ -33,7 +33,7 @@ function App() {
         <BoxWrap1 $borderColor="pink">
           3번 박스
         </BoxWrap1>
-        <div>
+        <div className="btn-box">
           <button className="btn"> 충전이 곧 완료됩니다.</button>
         </div>
       </Wrap>
@@ -63,8 +63,10 @@ const Wrap = styled.div`
     color:#fff;
   }
   &.focus {
-    .btn {
+    .btn-box {
       position:fixed;
+      width:100%;
+      height:100vsh;
       bottom:0;
       left:0;
     }
