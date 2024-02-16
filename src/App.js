@@ -66,9 +66,15 @@ const Wrap = styled.div`
     .btn-box {
       position:fixed;
       width:100%;
-      height:100vsh;
-      bottom:0;
+      height:100svh;
+      background:gray;
+      top:0;
       left:0;
+      .btn{
+        position:absolute;
+        left:0;
+        bottom:0;
+      }
     }
   }
 `;
