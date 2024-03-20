@@ -50,7 +50,7 @@ function App() {
 
   return (
     <div className="App">
-      <GlobalStyles />
+      <GlobalStyles /> sgsdgsdg
       {/* <RiotApp /> */}
 
       <Wrap className={focusIn ? 'focus': ''}>
