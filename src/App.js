@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <GlobalStyles /> sgsdgsdg
       {/* <RiotApp /> */}
-      {/* 2 */}
+      {/* 3 */}
     </div>
   );
 }
