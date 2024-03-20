@@ -5,7 +5,7 @@ import { GlobalStyles } from './assets/styles/GlobalStyles';
 function App() {
   return (
     <div className="App">
-      <GlobalStyles />
+      <GlobalStyles /> sgsdgsdg
       {/* <RiotApp /> */}
     </div>
   );
