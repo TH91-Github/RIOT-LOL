@@ -203,5 +203,4 @@ const SearChIcon = styled.span`
       display:block;
     }
   }
-  
 `;
